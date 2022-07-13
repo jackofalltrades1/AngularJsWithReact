@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Angular 1.x with React</title>
+  </head>
+
+  <body>
+    <!--<script src="/node_modules/angular/angular.js"></script>-->
+    <style>
+      .done-true{
+        text-decoration: line-through;
+      }
+      .done-false{
+        text-decoration: "";
+      }
+      .angular-part{
+        background-color: lightskyblue
+      }
+      .react-part{
+        background-color: cornflowerblue
+      }
+      .list-item{
+        cursor: pointer
+      }
+
+    </style>
+    
+    <div ng-app="app">
+        <div ng-controller="MessengerCtrl">
+            <div class="angular-part">
+              <h1>Sender from AngularJs</h1>
+              <ul class="unstyled">
+              <li ng-repeat="m in msg">
+                  <span class="done-{{m.done}}">{{m.text}}</span>
+              </li>
+              </ul>
+              <form ng-submit="sendMsg()">
+              <input type="text" ng-model="msgText"  size="30"
+                      placeholder="send new todo here">
+              <input class="btn-primary" type="submit" value="add">
+              </form>
+              <div>&nbsp;</div>
+            </div>
+            <div >  <!--ng-if={{todos}}-->
+              <react-directive  msg=msg mark-complete="markMsgRead(text)"></react-directive>
+            </div>
+            
+        </div>
+    </div>
+
+    
+    
+    <script src="dist/bundle.min.js"></script>    
+
+  </body>
+</html>
